@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanfic Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>✨ Fanfic Generator ✨</h1>
+
+        <form id="fanfic-form" action="/generate" method="post">
+            <!-- Step 1: Fandom -->
+            <div class="step" id="step1">
+                <label>Fandom:</label>
+                <input type="text" name="fandom" placeholder="e.g., Jujustu Kaisen, Harry Potter" required><br>
+
+                <button type="button" onclick="nextStep(2)">Next</button>
+            </div>
+
+            <!-- Step 2: Main Character Selection, Name, and Traits -->
+            <div class="step" id="step2" style="display:none;">
+                <label>Main Character Type:</label><br>
+                <div class="radio-group">
+                    <input type="radio" id="self_insert" name="main_character_type" value="self_insert" checked>
+                    <label for="self_insert">Self-Insert</label>
+
+                    <input type="radio" id="character" name="main_character_type" value="character">
+                    <label for="character">Character</label>
+                </div><br><br>
+                
+                <div id="self_insert_field">
+                    <label>Your Name:</label>
+                    <input type="text" name="main_character" placeholder="Enter your name">
+                </div>
+                
+                <div id="character_field" style="display:none;">
+                    <label>Character Name:</label>
+                    <input type="text" name="character_name" placeholder="Enter character name">
+                </div>
+                
+                <label>Main Character Traits:</label>
+                <input type="text" name="main_character_traits" placeholder="e.g., sarcastic, brooding"><br>
+
+                <button type="button" onclick="nextStep(3)">Next</button>
+            </div>
+
+            <!-- Step 3: Love Interest and Traits -->
+            <div class="step" id="step3" style="display:none;">
+                <label>Love Interest:</label>
+                <input type="text" name="love_interest" placeholder="e.g., Gojo, Cedric Diggory" required><br>
+
+                <label>Love Interest Traits:</label>
+                <input type="text" name="love_interest_traits" placeholder="e.g., clever, stubborn"><br>
+
+                <button type="button" onclick="nextStep(4)">Next</button>
+            </div>
+
+            <!-- Step 4: Setting, Tropes, and Conflict -->
+            <div class="step" id="step4" style="display:none;">
+                <label>Setting/Universe:</label>
+                <input type="text" name="setting" placeholder="e.g., Modern AU, 1960s Italy, JJK universe"><br>
+
+                <label>Tropes:</label>
+                <input type="text" name="tropes" placeholder="e.g., enemies to lovers, fake dating"><br>
+
+                <label>Conflict (optional):</label>
+                <input type="text" name="conflict" placeholder="Leave blank for random conflict"><br>
+
+                <button type="button" onclick="nextStep(5)">Next</button>
+            </div>
+
+            <!-- Step 5: Word Length -->
+            <div class="step" id="step5" style="display:none;">
+                <label>Word Length:</label>
+                <select name="word_length">
+                    <option value="500">500 words</option>
+                    <option value="1000">1k words</option>
+                    <option value="2000">2k words</option>
+                </select><br>
+
+                <button type="submit">Generate Fanfic</button>
+            </div>
+        </form>
+    </div>
+
+    {% if fanfic %}
+      <div class="output">
+        <h2>📖 Your Fanfic:</h2>
+        <pre>{{ fanfic }}</pre>
+      </div>
+    {% endif %}
+
+    <script>
+        const selfInsertRadio = document.getElementById('self_insert');
+        const characterRadio = document.getElementById('character');
+        const selfInsertField = document.getElementById('self_insert_field');
+        const characterField = document.getElementById('character_field');
+
+        selfInsertRadio.addEventListener('change', toggleFields);
+        characterRadio.addEventListener('change', toggleFields);
+
+        function toggleFields() {
+            if (selfInsertRadio.checked) {
+                selfInsertField.style.display = 'block';
+                characterField.style.display = 'none';
+            } else {
+                selfInsertField.style.display = 'none';
+                characterField.style.display = 'block';
+            }
+        }
+
+        function nextStep(stepNumber) {
+            document.querySelectorAll('.step').forEach(step => step.style.display = 'none');
+            document.getElementById(`step${stepNumber}`).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

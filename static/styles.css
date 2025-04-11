@@ -1,0 +1,105 @@
+
+
+body {
+    font-family: 'Comic Sans MS', 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffccff, #ccffff);
+    color: #5a189a;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 3px dashed #ff99cc;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ff66b2;
+    text-shadow: 2px 2px #ffe6f2;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin: 20px 0 10px;
+    font-weight: bold;
+    color: #9933cc;
+    font-size: 1.1rem;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 2px solid #ff99cc;
+    border-radius: 12px;
+    font-size: 1rem;
+    background-color: #fff0f5;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+button {
+    padding: 15px 25px;
+    background: #ff66b2;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #cc66ff;
+    transform: scale(1.05);
+}
+
+.output {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #ffe6f2;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', monospace;
+}
+/* Group the radio buttons */
+.radio-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.radio-group label {
+    font-weight: normal;
+    font-size: 1rem;
+    color: #5a189a;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
